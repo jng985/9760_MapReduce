@@ -5,7 +5,12 @@
 As you can imagine, the fix is not to hardcode all of these scenarios inside the map/reduce functions but instead, to come up with a more generic way to solve this.
 
 Solution:
-Add a regular expression argument
+
+Add a regular expression pattern argument
+
+1. Pass the pattern as command line argument that can be read by `mapper.py` through `sys.argv[-1]`.
+
+2. Use `re.search(pattern, word)` in `mapper.py`.
 
 - Words that start wth `"f"` or end in `"x"`
 
@@ -34,7 +39,7 @@ docker run \
 foo	6
 ```
 
-Other Regular Expressions:
+Other Patterns:
 
 - Words with only one capital
 `"^[a-z]*[A-Z][a-z]*$"`
